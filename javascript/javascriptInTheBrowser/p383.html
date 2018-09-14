@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<title>preventDefault 예제</title>
+
+<script type="text/javascript">
+
+function stopDefAction(evt) {
+  // id값이 txt인 input에 빈 값이면 막아라 
+  if(!document.querySelectorAll('#txt').value){
+      evt.preventDefault();
+      }
+
+}
+</script>
+</head>
+
+<body>
+
+<p>체크박스 컨트롤을 클릭해 주세요</p>
+
+<form action="https://developer.mozilla.org/ko/docs/Web/API/Event/preventDefault" onsubmit='stopDefAction(event)'>
+  <!-- <input type="checkbox" onclick="stopDefAction(event);"/>
+  <label for="checkbox">체크박스</label> -->
+  <input type="text" id="txt"/>
+  <button type="submit">Send</button>
+</form>
+
+</body>
+</html>

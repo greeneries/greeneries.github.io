@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<title>preventDefault 예제</title>
+<style media="screen">
+  body{
+    background-color: pink;
+  }
+  div{
+    display: block;
+    width: 200px;
+    height: 300px;
+    background-color: violet;
+  }
+</style>
+
+<script type="text/javascript">
+
+  function clickBody(){
+    alert('body');
+  }
+
+  // 이벤트가 일어난 요소에서 시작해 거슬러 올라가는 방법을 버블링이라고 한다.
+  // 이벤트를 현재 요소에서 끝내고 더는 전달되지 않게 막는 것을 stopPropagation이라고 한다.
+  function clickDiv(e){
+    alert('div');
+    e.stopPropagation(); //이벤트를 현재 요소에서 끝내고 더는 전달되지 않게 막는 방법 
+  }
+
+
+</script>
+
+</head>
+
+<body onclick="clickBody()">
+  <div onclick="clickDiv(event)">
+    11
+  </div>
+</body>
+</html>

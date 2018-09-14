@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen">
+    .highlight {
+      background: #ff0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p data-action="highlight" data-containing="unique">
+    action="highlight" containing="unique"
+  </p>
+  <p data-action="highlight">
+    action="highlight"
+  </p>
+  <p data-action="removeHighlights">
+    action="removeHighlights"
+  </p>
+
+  <script type="text/javascript">
+    function highlightParas(containing) {
+      if (typeof containing === 'string') {
+        containing = new RegExp(`\\b${containing}\\b`, 'i');
+      } else {
+        return;
+      }
+      const paras = document.getElementsByTagName('p');
+      console.log(paras);
+      for (let p of paras) {
+        if (!containing.test(p.textContent)) continue;
+        p.classList.add('highlight');
+      }
+    }
+
+    function removeParaHighlights() {
+      const paras = document.querySelectorAll('p.highlight');
+      for (let p of paras) {
+        p.classList.remove('highlight');
+      }
+    }
+    const highlightActions = document.querySelectorAll(
+      '[data-action="highlight"]');
+    for (let a of highlightActions) {
+      a.addEventListener('click', evt => {
+        console.log('#1');
+        evt.preventDefault();
+        highlightParas(a.dataset.containing);
+      });
+    }
+    const removeHighlightActions =
+      document.querySelectorAll('[data-action="removeHighlights"]');
+    for (let a of removeHighlightActions) {
+      a.addEventListener('click', evt => {
+        console.log('#2');
+        evt.preventDefault();
+        removeParaHighlights();
+      });
+    }
+  </script>
+
+</body>
+
+</html>

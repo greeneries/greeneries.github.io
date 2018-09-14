@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Simple HTML</title>
+  <style media='screen'>
+    .blue{
+      color:blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="content">
+    <p class='light center jumbotron row'>111</p>
+    <p name='second'>222</p>
+    <p class='light'>333</p>
+    <p id='unique' style=''>444</p>
+
+  <script type="text/javascript">
+    var elems = document.querySelectorAll('p');
+    for(var prop in elems){
+      if(elems.hasOwnProperty(prop)){
+        console.log('naye: ' + elems[prop]);
+        elems[prop].innerHTML ='777';
+      }
+    }
+
+    var elems = document.querySelectorAll('.light');
+    console.log(elems.length);
+
+    // Array, HTMLCollecton 객체는
+    // 이미 Iteration 규약이 적용되어서 for of 문을 사용 할 수 있다.
+    for(let elem of elems){
+      console.log("naye: "+ elem);
+      //elem.classList = 'blue';
+      elem.classList.add('blue');
+    }
+  </script>
+
+</body>
+
+</html>

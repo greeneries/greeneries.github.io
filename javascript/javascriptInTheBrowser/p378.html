@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Simple HTML</title>
+</head>
+
+<body>
+  <div id="content">
+
+    <p>111</p>
+
+    <textarea name="name" rows="5" cols="20" onkeyup="mykeyup(this);">초기값</textarea>
+
+
+    <button data-action="highlight" data-containing="unique">    Highlight paragraphs containing "unique" </button>
+    <script type="text/javascript">
+    // a.addEventListener('click', function(event){
+    //   console.log(event);
+    //   event.preventDefault();
+    //   highlightParas(a.dataset.containing);
+    // });
+
+
+      function mykeyup(elem){
+          console.log(elem.value);
+      }
+      
+      const highlightActions = document.querySelectorAll('[data-action="highlight"]');
+      for (let a of highlightActions) {
+        a.addEventListener('click', evt => {
+          console.log(evt);
+          evt.preventDefault();
+          highlightParas(a.dataset.containing);
+        });
+      }
+
+      const removeHighlightActions = document.querySelectorAll('[data-action="removeHighlights"]');
+      for (let a of removeHighlightActions) {
+        a.addEventListener('click', evt => {
+          evt.preventDefault();
+          removeParaHighlights();
+        });
+      }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Simple HTML</title>
+  <style media='screen'>
+    .highlight {    background: #ff0;    font-style: italic; }
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <p>unique sdkfkljldsfkljlskdfksdf 111</p>
+    <p>222 unique</p>
+    <p>333</p>
+
+    <script type="text/javascript">
+      // function removeParaHighlights() {
+      //   const paras = document.querySelectorAll('p.highlight');
+      //   for (let p of paras) {
+      //     p.classList.remove('highlight');
+      //   }
+      // }
+
+      // \\b${containing}\\b p363을 참조
+      // 동적으로 받은 파라미터인 문자열을 사용하여
+      // 정규표현식을 적용하기 위해서 new RegExp()를 사용해서 정규 표현식을 적용한다.
+      function highlightParas(containing) {
+        if (typeof containing === 'string')
+          containing = new RegExp(`\\b${containing}\\b`, 'i'); // i는 flag, 대소문자 구분하지 말라
+        const paras = document.getElementsByTagName('p');
+        console.log(paras);
+        for (let p of paras) {
+          if (!containing.test(p.textContent)) continue;
+          p.classList.add('highlight');
+        }
+      }
+      highlightParas('unique');
+    </script>
+</body>
+
+</html>
