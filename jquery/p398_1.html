@@ -1,0 +1,61 @@
+<!--https://momentjs.com/-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="jquery-3.3.1.min.js" charset="utf-8">  </script>
+
+  <script type="text/javascript">
+
+    $(function() {    // code here is run after all HTML has been    // loaded and the DOM is constructed
+
+      $('p:odd').css('color', 'red');
+      $('p:even').css('color', 'blue');
+
+      // h3 뒤에 hr를 넣고 안에다가 *를 붙인 후 홀수만 필터, 그리고 color를 red로 변경
+      $('h3').after('<hr>').append('<sup>*</sup>').filter(':odd').css('color', 'red');
+
+      // h3 태그 뒤에 hr 넣고 class가 hightlight가 아닌 객체에다가 margin-left를 20px로 수정
+      $('h3').after('<hr>').not('.highlight').css('margin-left', '20px');
+
+      // p 태그 전에 hr 넣고 p 자식 태그에 class이름이 code인 것을 찾아서  font size를 30px로 수정
+      $('p').before('<hr>').find('.code').css('font-size', '30px');
+
+      // jQuery는 무조건 jQuery 객체를 반납하기 때문에 .을 찍어서 사용할 수 있다.
+      // 첫 번째 h3 객체
+      const para2 = $('h3').get(1);
+      console.log($('h3') instanceof $); // true
+      console.log($('h3').get(1) instanceof $);  // false
+      console.log($('h3').get(1) instanceof HTMLElement);  // true
+
+    });
+
+  </script>
+</head>
+<body>
+
+  <h3>Fruits</h3>
+  <p>banana</p>
+  <p>orange</p>
+  <div class="">
+    <p>grape</p>
+  </div>
+
+  <h3 class="highlight">Animal</h3>
+  <p>
+    tiger
+    <i class="code">liger</i>
+    <i>tigon</i>
+  </p>
+  <p>bear</p>
+
+  <h3>TV Channel</h3>
+  <p>ebs</p>
+  <p>kbs</p>
+  <p>mbc</p>
+
+</body>
+
+</html>

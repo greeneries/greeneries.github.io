@@ -1,0 +1,126 @@
+<!--https://momentjs.com/-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="jquery-3.3.1.min.js" charset="utf-8"> </script>
+
+  <style media="screen">
+    .error{
+      border: 3px solid red;
+      padding: 10px;
+    }
+    div.groove {
+      border-style: groove;
+      height: 400px;
+      width: 700px;
+    }
+  </style>
+  <script type="text/javascript">
+    $(function() { // code here is run after all HTML has been    // loaded and the DOM is constructed
+
+      var tbody = document.querySelector('#target');
+
+      function renderTable(users){
+        var html = '';
+        for (var i = 0; i < users.length; i++) {
+          var user = users[i];
+          html +=`<tr>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.job}</td>
+          </tr>`;
+        }
+        $('tbody').html(html);
+      }
+
+      function refreshServerInfo() {
+        const $serverInfo = $('.serverInfo');
+
+        // $.get()은 jQuery가 제공하는 Ajax 기술 함수 중에 하나
+        // 객체 .then 이런 코드를 보시면 객체 promise라고 보자
+        $.get('http://localhost:3000/users').then( // successful return
+          function(data) {
+            renderTable(data);
+          },
+          function(jqXHR, textStatus, err) { // fail return
+            console.error(jqXHR);
+            console.error(textStatus);
+            console.error(err);
+            $serverInfo.addClass('error').html('Error connecting to server.');
+          });
+      }
+      refreshServerInfo();
+    });
+
+  </script>
+</head>
+
+<body>
+
+  <div class="serverInfo">
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>job</th>
+        </tr>
+      </thead>
+      <tbody id="target">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br />
+  <div class="groove">
+   <h3>[ npm json-server 설치 및 설정 ]</h3>
+    참고 URL: https://www.npmjs.com/package/json-server#install <br>
+   <ol>
+     <li>json-server 설치 <br/> npm install -g json-server <br/> </li>
+     <li> db.json 파일 생성 <br />
+       {
+         "posts": [{
+           "id": 1,
+           "title": "json-server",
+           "author": "typicode"
+         }],
+         "comments": [{
+           "id": 1,
+           "body": "some comment",
+           "postId": 1
+         }],
+         "profile": {
+           "name": "typicode"
+         },
+         "users": [{
+           "id": 1,
+           "name": "TOM",
+           "job": "programmer"
+         },
+         {
+           "id": 2,
+           "name": "Amy",
+           "job": "Doctor"
+         }]
+       }<br/>
+    </li>
+    <li>
+      json 서버 시작 <br/> json-server --watch db.json <br/>
+    </li>
+    <li>
+      node-server를 이용하여 페이지 띄우기 <br/> http://localhost:3000/users
+    </li>
+   </ol>
+
+ </div>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!--https://momentjs.com/-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="jquery-3.3.1.min.js" charset="utf-8">  </script>
+
+  <script type="text/javascript">
+
+    $(function() {    // code here is run after all HTML has been    // loaded and the DOM is constructed
+      const pTags = document.querySelectorAll('p');
+      const $paras = $('p');
+      console.log(pTags[0] === $paras[0]); //true
+      console.log($paras.length); //3
+      console.log(typeof $paras); //object
+      console.log($paras instanceof $); //true
+      console.log($paras instanceof jQuery); //true
+
+      console.log(document.getElementsByTagName('p') instanceof HTMLCollection); //true
+      console.log(Reflect.ownKeys($.prototype));
+
+      // $paras 객체는 상속 관계에 의해서 $prototype이 제공하는 자원을 사용할 수 있습니다.
+      console.log($paras instanceof $); // true
+
+      const newPara = document.createElement('p');
+      newPara.textContent = 'Newly created paragraph...';
+      const $newPars = $(`<p>newly created paragraph...</p>`);
+
+
+      $('p').text('ALL PARAGRAPHS REPLACED');
+      $('p').html('<i>ALL</i> PARAGRAPHS REPLACED');
+
+      $('p')          // matches all paragraphs
+      .eq(1)      // third paragraph (zero-based indices)
+      .html('<i>THIRD</i> PARAGRAPH REPLACED');
+
+      $('p').remove(); 
+    });
+
+  </script>
+</head>
+<body>
+
+
+  <p>111</p>
+  <p>22</p>
+  <div class="container">
+    <p>555</p>
+  </div>
+  <p>3333</p>
+
+</body>
+
+</html>
