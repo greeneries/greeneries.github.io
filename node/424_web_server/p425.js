@@ -3,10 +3,10 @@ const http = require('http');
 const dir = __dirname + '/';
 let count = 0;
 const server = http.createServer(function(req, res) {
-  if (req.method === 'GET' && req.url === '/Favicon.ico') {
+  if (req.method === 'GET' && req.url === '/node/424_web_server/favicon.ico') {
     console.log('count : ', ++count);
     const fs = require('fs');
-    fs.createReadStream('Favicon.ico');
+    fs.createReadStream('node/424_web_server/favicon.ico');
     fs.pipe(res); // this replaces the call to 'end'
   } else {
     console.log(`${req.method} ${req.url}`);
