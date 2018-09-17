@@ -18,11 +18,20 @@ class Squre{
 }
 
 let s = new Squre();
-console.log(s);
-console.log(s.length);
-console.log(s.area);
+console.log(s); // Squre { length: 10 }
+console.log(s.length); // 10
+console.log(s.area); // 100
 
 s.area = 400;
 
-console.log(s.length);
-console.log(s.area);
+console.log(s.length); // 20
+console.log(s.area); // 400
+
+
+/*
+{ get: [Function: get area],
+  set: [Function: set area],
+  enumerable: false,
+  configurable: true }
+ */
+console.log(Object.getOwnPropertyDescriptor(Squre.prototype, 'area'));
