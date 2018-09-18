@@ -20,4 +20,4 @@ var boat = new Boat();
 // private 해당 변수는 Boat 클래스 안에서만
 // 접근할 수 있다. ( 그렇게 써 주세요! )
 console.log(boat.color);
-//# sourceMappingURL=4.js.map
+//# sourceMappingURL=boat.js.map
