@@ -1,0 +1,8 @@
+function aaa(){
+  return
+  {
+    test:1
+  };
+}
+
+alert(typeof aaa());
