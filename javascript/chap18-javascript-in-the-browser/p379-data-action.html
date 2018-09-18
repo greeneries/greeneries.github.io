@@ -1,0 +1,31 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Simple HTML</title>
+</head>
+<body>
+  <div id="content">
+
+
+    <button data-action="highlight" data-containing="unique">    Highlight paragraphs containing "unique" </button>
+    <button data-action="removeHighlights">    Remove highlights </button>
+
+    <script type="text/javascript">
+
+      const highlightActions = document.querySelectorAll('[data-action="highlight"]');
+
+
+//{ action : "highlight"
+// caseSensitive : "true"
+// containing : "giraffe"
+// __proto__ : DOMStringMap
+// }
+      console.log(highlightActions[0].dataset);  // DOMStringMap { containing: "unique", action: "highlight" }
+      highlightActions[0].dataset.containing = "giraffe";
+      highlightActions[0].dataset.caseSensitive = "true";
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Simple HTML</title>
+  <style media='screen'>
+    .blue{
+      color:blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="content">
+    <p class='light center jumbotron row'>111</p>
+    <p name='second'>222</p>
+    <p class='light'>333</p>
+    <p id='unique' style=''>444</p>
+
+  <script type="text/javascript">
+      // var arr = document.getElementsByTagName('p');
+      // console.log(arr);
+      // console.log(Array.isArray(arr)); // false
+      // console.log(arr instanceof HTMLCollection); // true
+
+      // DOM 메서드가 반환하는 컬렉션은 자바스크립트 배열이 아니라
+      // HTMLCollecton의 인스턴스로 배열 비슷한 객체입니다.
+      // 이 컬렉션에 for 루프를 사용할 수는 있지만 map, filter, reduce
+      // 같은 Array.prototype 메서드는 사용 할 수 없습니다.
+      // [...document.getElementByTagName(p)]처럼
+      // 확산 연산자를 써서 HTMLCollection을 배열로 바꿀 수 있습니다.
+      var elems = document.getElementsByTagName('p');
+      for(var prop in elems){
+        if(elems.hasOwnProperty(prop)){
+          console.log('naye: ' + elems[prop]);
+          elems[prop].innerHTML ='777';
+        }
+      }
+
+      var elems = document.getElementsByClassName('light');
+      console.log(elems.length);
+
+      // Array, HTMLCollecton 객체는
+      // 이미 Iteration 규약이 적용되어서 for of 문을 사용 할 수 있다.
+      for(let elem of elems){
+        // console.log("naye: "+ elem);
+        elem.classList.add('blue');
+      }
+
+      var target = document.getElementById('unique');
+      target.style = 'font-size: 200%';
+
+      var elems = document.getElementsByName('second');
+      elems['0'].style = 'font-size: 500%';
+
+      var ptag = document.getElementsByTagName('p')[2];
+      console.log(ptag); // <p class='light'>333</p>
+      
+  </script>
+
+</body>
+
+</html>
