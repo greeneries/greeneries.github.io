@@ -1,0 +1,30 @@
+<h1>
+  {{ title }}
+</h1>
+<p>
+  {{ body }}
+</p>
+
+<hr/>
+
+<!-- app-experiment-detail 문자열은 ExperimentDetailComponent 클래스의
+selector 항목으로 지정한 키워드입니다.
+*ngFor : anguler가 지원하는 구조 Directive 로써 반복처리를 수행할 수 있습니다.
+
+let experiment of experiments
+let 임시변수 of 배열
+-->
+<app-experiment-detail *ngFor="let exp of experiments"
+ [experiment]="exp"></app-experiment-detail>
+
+<!--
+app-experiment-detail 객체에 멤버변수로  experiment가 있고
+experiment가 가리키는 변수 값을 여기다가 할당하겠다.
+
+<input type="text" name="" [value]="exp" />
+<input type="text" name="" [value]="exp" />
+<input type="text" name="" [value]="exp" />
+<input type="text" name="" [value]="exp" />
+
+
+-->
