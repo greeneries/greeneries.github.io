@@ -10,6 +10,7 @@ export class AboutComponent implements OnInit {
   title: string = 'About Page';
   body: string = 'This is the about page body';
   message: string;
+  img : string ="../assets/images/logo.png";
 
   constructor(public _stateService: StateService) { }
 

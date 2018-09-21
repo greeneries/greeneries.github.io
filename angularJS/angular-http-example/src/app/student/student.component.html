@@ -1,0 +1,10 @@
+
+
+<div class="panel-heading"><b>StudentID , Student Name</b></div>
+<div *ngFor="let student of students" class="pannel pannel-default">
+  <div class="panel-heading">{{student.id}}, {{student.name}}</div>
+</div>
+
+<pre>
+  {{students | json}}
+</pre>

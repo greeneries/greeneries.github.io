@@ -1,0 +1,10 @@
+{
+  "students":
+        [
+          {"id": 1, "name": "Lee Sun Sin"},
+          {"id": 2, "name": "Hong Gil Dong"},
+          {"id": 3, "name": "Kang Gam chan"},
+          {"id": 4, "name": "Kim Yeo Na"},
+          {"id": 5, "name": "Back Nam Jun"}
+        ]
+}

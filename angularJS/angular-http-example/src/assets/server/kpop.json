@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "info": {
+    "idols": [{
+      "id": 1,
+      "name": "A-pink",
+      "image": "img001.png"
+    }, {
+      "id": 2,
+      "name": "Girls Generation",
+      "image": "img002.png"
+    }, {
+      "id": 3,
+      "name": "Black Pink",
+      "image": "img003.png"
+    }]
+  },
+  "msg": "success"
+}

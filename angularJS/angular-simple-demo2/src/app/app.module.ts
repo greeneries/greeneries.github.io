@@ -11,10 +11,12 @@ import { AboutComponent } from './about/about.component';
 import { ExperimentsComponent } from './experiments/experiments.component';
 import { ExperimentDetailComponent } from './experiments/experiment-detail/experiment-detail.component';
 import { HomeComponent } from './home/home.component';
+import { HeroComponent } from './hero/hero.component';
 
 import { StateService } from './common/state.service';
 import { ExperimentsService } from './common/experiments.service';
-import { HeroComponent } from './hero/hero.component';
+import { HeroService } from './common/hero.service';
+
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,7 +42,7 @@ const appRoutes: Routes = [
     BrowserModule, CommonModule, HttpModule,FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [StateService,ExperimentsService],
+  providers: [StateService,ExperimentsService,HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
