@@ -36,6 +36,7 @@ export class EmpComponent implements OnInit {
   // addEmp(firstName: string, lastName: string) {
   //   alert('addEmp() # ' + firstName + ' ' + lastName);
   // }
+
   removeEmp(person: any) {
     alert(JSON.stringify(person));
 

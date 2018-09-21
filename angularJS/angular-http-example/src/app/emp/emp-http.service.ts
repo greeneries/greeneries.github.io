@@ -40,6 +40,7 @@ export class EmpHttpService {
     let options = new RequestOptions({ headers: headers });
     let emp = { "id": 0, "firstName": firstName, "lastName": lastName };
 
+    // stringify : javascript를 JSON형식으로 변환
     return this.http.post(this.empsUrl, JSON.stringify(emp), options)
       .pipe(
         map(response => {
