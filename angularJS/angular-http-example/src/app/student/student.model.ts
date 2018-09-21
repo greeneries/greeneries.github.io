@@ -1,2 +1,4 @@
-export class Student.Model {
+export class Student {
+  id: number;
+  name: string;
 }

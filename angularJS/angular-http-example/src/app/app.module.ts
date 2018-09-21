@@ -7,6 +7,7 @@ import { KpopComponent } from './kpop/kpop.component';
 
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { KpopHttpService } from './kpop/kpop-http.service';
 import { EmpComponent } from './emp/emp.component';
@@ -23,6 +24,7 @@ import { StudentComponent } from './student/student.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     HttpModule
   ],
   providers: [KpopHttpService],
