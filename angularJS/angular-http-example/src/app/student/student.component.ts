@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';]
+import { Component, OnInit } from '@angular/core';
 import { StudentHttpService } from './student-http.service'
 import { Student } from './student.model'
 

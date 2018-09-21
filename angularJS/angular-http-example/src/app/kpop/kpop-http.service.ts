@@ -16,7 +16,8 @@ export class KpopHttpService {
     // res.json()은 데이터 추출
     return this.http.get('./assets/server/kpop.json').toPromise()
             .then(res =>  {
-              console.log(res); return res.json().info.idols;
+              console.log(res);
+              return res.json().info.idols;
             });
     }
 
