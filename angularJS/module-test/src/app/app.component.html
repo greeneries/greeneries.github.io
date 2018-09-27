@@ -1,0 +1,34 @@
+<div class="">
+    <h2>{{title}}</h2>
+</div>
+
+<div class="">
+    <li><a routerLink="home" class="btn">Home</a></li>
+    <li><a routerLink="a" class="btn">a</a></li>
+    <li><a routerLink="b" class="btn">b</a></li>
+    <li><a routerLink="lazy" class="btn">lazy x</a></li>
+    <li><a routerLink="lazy/y" class="btn">lazy y</a></li>
+</div>
+
+<br/>
+<br/>
+
+<div class="outlet">
+    <router-outlet></router-outlet>
+</div>
+
+
+<!--
+ng g m user --routing
+ng g m home --routing
+ng g  m share
+ng g c home/home --module home
+ng g s share/dataShare
+
+ng g c user/a --module user
+ng g c user/b --module user
+
+ng g m heavy --routing
+ng g c heavy/x --module  heavy
+ng g c heavy/y --module heavy
+-->
