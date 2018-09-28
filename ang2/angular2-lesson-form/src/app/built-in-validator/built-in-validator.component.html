@@ -1,0 +1,77 @@
+
+<h2 class="w3-text-blue">Form Validation Driven Template</h2>
+<p>템플릿 내장 검증기를 사용</p>
+
+<!--
+엘리먼트에 접근하여 검증하기 위해서 참조변수 #userId 선언이 필요하다.
+[(ngModel)]="user.id" 설정은 템플릿과 클래스 사이에서 양방향 데이터 동기화를 위한 설정이고
+#userId="ngModel" 설정은 해당 엘리먼트가 양방향 동기화 대상(ngModel)이므로
+pattern="^[a-z][a-z0-9]{1,9}" required 등에 평가기준을 적용하고 평가결과를
+userId 키로 관리하도록 지시한다.
+ -->
+ <!--
+input box에다가 ngModel이라는 양방향 이벤트를 걸었어요.
+양방향 바인딩은 property 바인딩을 포함하고 있죠.
+componenet 값이 변경 되었으니 화면에 표시 됩니다.[ngModel] 이게 했음   user = { id: 'elin', name: 'naye' };
+자...소괄호 바인딩도 있어요.
+(ngModel)은 input 박스에 입력한 값에 이벤트 거는 거죠..
+
+소괄호 이벤트 바인딩을 걸어서... 사용자가 입력하면
+상태 값이 즉시 바뀌는지 확인할 겁니다.
+
+#userid에서 #은 화면참조를 걸었다는 뜻
+#userId="ngModel" 이렇게 한 이유는 입력한 값이 유효한지 검사하기 위한 것
+
+
+[value]='email'  : property binding, 이렇게 하게 되면은
+사용자가 입력시 값이 바로바로 변경되지 않는다.
+그래서 이벤트 바인딩을 걸어야 함.
+
+<p>
+  <label class="w3-label w3-text-blue">ID</label><label>{{' : '+userId.valid}}</label>
+  <input class="w3-input w3-border" type="text" name="id"
+    [(ngModel)]="user.id" #userId="ngModel"
+    pattern="^[a-z][a-z0-9]{1,9}" required>
+</p>
+
+-->
+
+<!-- <div *ngFor='let m of members' highlight (mouseover)="setAge(m.name)">
+  {{m.name}} {{m.age}}
+</div> -->
+
+
+<p>
+  <label class="w3-label w3-text-blue">ID</label><label>{{' : '+userId.valid}}</label>
+  <input class="w3-input w3-border" type="text" name="id"
+    [(ngModel)]="user.id" #userId="ngModel" mevent (mousedown)="test()"
+    pattern="^[a-z][a-z0-9]{1,9}" required>
+</p>
+<p>
+  <label class="w3-label w3-text-blue">Name</label><label>{{' : '+userName.valid}}</label>
+  <input class="w3-input w3-border" type="text" name="name"
+    [(ngModel)]="user.name" #userName="ngModel"
+    required minlength="3" maxlength="10">
+</p>
+
+<p>
+  <label class="w3-label w3-text-blue">Email</label><label>{{' : '+userEmail.valid}}</label>
+  <input class="w3-input w3-border" type="text" name="name"
+    [(ngModel)]="user.email" #userEmail="ngModel"
+    required pattern="^[a-z][a-z0-9]@[a-z].[a-z]" >
+</p>
+
+
+<!--
+user.id와 user.name이 유효하면 div class를 this-is-vaild로 처리
+user.id와 user.name이 유효하지 않다면 div class를 this-is-invaild로 처리
+
+userid.valid는 userid는 우리가 만든 변수인데...valid함수를 사용해서
+값을 체크한다는 의미, pattern과 required로 입력한 값을 체크
+-->
+<div class="this-is-valid" *ngIf="userId.valid && userName.valid && userEmail.valid">
+  {{user|json}} {{user.id}}
+</div>
+<div class="this-is-invalid" *ngIf="!userId.valid || !userName.valid || !userEmail.valid">
+  {{user|json}} {{user.id}}
+</div>
