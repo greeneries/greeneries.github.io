@@ -12,11 +12,11 @@ export class ListComponent implements OnInit {
 
   constructor(private listService: ListService) { }
 
+ // 페이지 로드되자마자 실행 ngOnInit
   ngOnInit() {
     this.listService.get().then(data =>{
       console.log(data);
       this.books = data;
-
     }).catch(error => {
       console.log('ListComponent getList error');
     });

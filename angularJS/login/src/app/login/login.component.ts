@@ -10,8 +10,8 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent implements OnInit {
   user = {
-    id:'',
-    pw:''
+    id:'user',
+    pw:'111'
   };
   errorMessage = '';
   returnUrl: string;
