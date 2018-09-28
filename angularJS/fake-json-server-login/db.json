@@ -1,0 +1,10 @@
+{
+  "users":[
+    {"id":"user", "pw":"111"},
+    {"id":"admin", "pw":"222"}
+  ],
+  "books":[
+    {"id": "1", "title": "angular 초보 탈출", "price": 15000},
+    {"id": "2", "title": "jQuery 초보 탈출", "price": 8000}
+  ]
+}

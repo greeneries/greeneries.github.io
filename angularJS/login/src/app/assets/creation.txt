@@ -1,0 +1,10 @@
+ng g c home
+ng c user-only
+ng g c login
+ng g c join
+ng g g guards/login
+ng g c list
+ng g s services/login
+ng g s services/join
+ng g class model/book
+ng g class model/book.model
