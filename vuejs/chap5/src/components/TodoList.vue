@@ -13,8 +13,17 @@
         <input v-if="todoItem.editing === true" type="text"  v-model="todoItem.content" v-on:keyup.enter="updateTodo(todoItem.content, index)" />
         <p v-else> {{ todoItem.content }} </p>
 <!--  :updateTodo(todoItem.content,index)-->
-        <button v-if="todoItem.editing === true" type="button" v-on:click="updateTodo(todoItem.content,index)">수정완료</button>
-        <button v-else type="button" v-on:click="isUpdate(index)">수정</button>
+
+        <!-- <button v-if="todoItem.editing === true" type="button" v-on:click="updateTodo(todoItem.content,index)">수정완료</button>
+        <button v-else type="button" v-on:click="isUpdate(index)">수정</button> -->
+
+        <span v-if="todoItem.editing === true" class="updateBtn" type="button" v-on:click="updateTodo(todoItem.content, index)">
+          <i class="fas fa-pen-square" aria-hidden="true"></i>
+        </span>
+
+        <span v-else class="updateBtn" type="button" v-on:click="isUpdate(index)">
+          <i class="fas fa-pen-alt" aria-hidden="true"></i>
+        </span>
 
         <span class="removeBtn" type="button" v-on:click="removeTodo(todoItem.content, index)">
           <i class="far fa-trash-alt" aria-hidden="true"></i>

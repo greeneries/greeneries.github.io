@@ -24,11 +24,11 @@ export default {
 
     if(localStorage.length > 0){
       for (var i = 0; i < localStorage.length; i++) {
-        let values = {"content": localStorage.key(i), "editing": false};
-        this.todoItems.push(values);
-         // JSON.stringify(values)
-        //this.todoItems.push(JSON.stringify(values));
-        // this.todoItems.push(localStorage.key(i));
+        if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
+          let values = {"content": localStorage.key(i), "editing": false};
+          this.todoItems.push(values);
+        }
+
       }
     }
   },
