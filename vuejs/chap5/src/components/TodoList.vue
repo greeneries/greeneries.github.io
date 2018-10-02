@@ -10,22 +10,22 @@
       <li v-for="(todoItem,index) in propsdata" v-bind:key="todoItem.content" class="shadow">
 
         <i class="checkBtn fas fa-check" aria-hidden="true"></i>
-        <input v-if="todoItem.editing === true" type="text"  v-model="todoItem.content" v-on:keyup.enter="updateTodo(todoItem.content, index)" />
+        <input v-if="todoItem.editing === true" type="text"  v-model="todoItem.content" v-on:keyup.enter="updateTodo(todoItem.id, todoItem.content)" />
         <p v-else> {{ todoItem.content }} </p>
 <!--  :updateTodo(todoItem.content,index)-->
 
         <!-- <button v-if="todoItem.editing === true" type="button" v-on:click="updateTodo(todoItem.content,index)">수정완료</button>
         <button v-else type="button" v-on:click="isUpdate(index)">수정</button> -->
 
-        <span v-if="todoItem.editing === true" class="updateBtn" type="button" v-on:click="updateTodo(todoItem.content, index)">
+        <span v-if="todoItem.editing === true" class="updateBtn" type="button" v-on:click="updateTodo(todoItem.id, todoItem.content)">
           <i class="fas fa-pen-square" aria-hidden="true"></i>
         </span>
 
-        <span v-else class="updateBtn" type="button" v-on:click="isUpdate(index)">
+        <span v-else class="updateBtn" type="button" v-on:click="isUpdate(todoItem.id)">
           <i class="fas fa-pen-alt" aria-hidden="true"></i>
         </span>
 
-        <span class="removeBtn" type="button" v-on:click="removeTodo(todoItem.content, index)">
+        <span class="removeBtn" type="button" v-on:click="removeTodo(todoItem.id)">
           <i class="far fa-trash-alt" aria-hidden="true"></i>
         </span>
       </li>
@@ -42,14 +42,14 @@
 
     },
     methods: {
-      removeTodo(content, index){
-        this.$emit('removeTodo', content, index);
+      removeTodo(id){
+        this.$emit('removeTodo', id);
       },
-      isUpdate(index){
-        this.$emit('isUpdate', index);
+      isUpdate(id){
+        this.$emit('isUpdate', id);
       },
-      updateTodo(content,index){
-        this.$emit('updateTodo', content, index);
+      updateTodo(id, content){
+        this.$emit('updateTodo', id, content);
       }
     },
     computed: {

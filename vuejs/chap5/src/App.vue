@@ -22,44 +22,49 @@ export default {
   },
   created(){
 
-    if(localStorage.length > 0){
-      for (var i = 0; i < localStorage.length; i++) {
-        if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
-          let values = {"content": localStorage.key(i), "editing": false};
-          this.todoItems.push(values);
-        }
-
-      }
-    }
+    // if(localStorage.length > 0){
+    //   for (var i = 0; i < localStorage.length; i++) {
+    //     if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
+    //       let values = {"content": localStorage.key(i), "editing": false};
+    //       this.todoItems.push(values);
+    //     }
+    //
+    //   }
+    // }
   },
   methods: {
     addTodo (content){
-
-      let values = {content:content, editing:false};
+      let id = this.todoItems.length <=0 ? 1 : this.todoItems.length+1;
+      let values = {id:id, content:content, editing:false};
       this.todoItems.push(values);
-      localStorage.setItem(content, JSON.stringify(values));
+      //localStorage.setItem(content, JSON.stringify(values));
 
     },
     clearAll(){
-      localStorage.clear();
+    //  localStorage.clear();
       this.todoItems = [];
     },
-    removeTodo(content, index){
-      localStorage.removeItem(content);
-      this.todoItems.splice(index,1);
+    removeTodo(id){
+      //localStorage.removeItem(content);
+      let k = this.todoItems.findIndex(x => x.id === id);
+      this.todoItems.splice(k,1);
     },
-    isUpdate(index){
+    isUpdate(id){
 
-      let todoItem = localStorage.getItem(localStorage.key(index));
-      let k = this.todoItems.findIndex(x => x.content === JSON.parse(todoItem).content);
-      let boolValue = JSON.parse(todoItem).editing == 'true' ? true : false;
-      this.todoItems[k].editing = !boolValue;
+      //let todoItem = localStorage.getItem(localStorage.key(index));
+      // let k = this.todoItems.findIndex(x => x.content === JSON.parse(todoItem).content);
+
+      let k = this.todoItems.findIndex(x => x.id === id);
+      // let boolValue = todoItem.editing == 'true' ? true : false;
+      this.todoItems[k].editing = !this.todoItems[k].editing;
 
     },
-    updateTodo(content, index){
+    updateTodo(id, content){
       console.log('updateTodo is called');
-      this.removeTodo(content, index);
-      this.addTodo(content);
+      let k = this.todoItems.findIndex(x => x.id === id);
+
+      console.log(this.todoItems[k].content,content);
+      this.todoItems[k].editing = false;
     }
   },
   components:{
