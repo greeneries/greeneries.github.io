@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>Vue with Axios Sample</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.d_true {
+	text-decoration: line-through;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container" id="app">
+  <h1>Todo List</h1>
+	<div class="form-group">
+			<input type ="text" v-model="txt"></input>
+			<button type="submit" class="btn btn-default" v-on:click="addData(txt)">추가</button>
+	</div>
+	<div>
+		<ul>
+			<li v-for="todo in todos">
+				<div v-if="todo.done == false">
+					{{ todo.title }}
+					<button type="submit" class="btn btn-default" v-on:click="doneData(todo.title)">완료</button>
+					<button type="submit" class="btn btn-default" v-on:click="delData(todo.title)">삭제</button>
+				</div>
+				<div class="d_true" v-else>{{ todo.title }}
+					<button type="submit" class="btn btn-default" v-on:click="doneData(todo.title)">완료해제</button>
+					<button type="submit" class="btn btn-default" v-on:click="delData(todo.title)">삭제</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data:{
+					txt: '',
+					todos:[]
+				},
+				methods: {
+					doneData : function(content){
+						var i = this.todos.findIndex(x => x.title === content);
+						var temp = this.todos[i];
+						temp.done = !this.todos[i].done;
+						this.todos.splice(i,1,temp);
+					},
+					addData: function(content){
+							this.todos.push({"title":content,"done":false});
+					},
+					delData: function(content){
+						var i = this.todos.findIndex(x => x.title === content);
+						this.todos.splice(i,1);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
