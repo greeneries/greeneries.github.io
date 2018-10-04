@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'books';
+  isLogin = false;
+
+  ngOnInit() {
+    console.log("AppComponent is called. ngOnInit()");
+  }
+
+  // changeTitleBar(){
+  //   console.log('changeTitleBar is called');
+  // }
+
 }

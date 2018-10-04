@@ -1,0 +1,44 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "방구석 미술관",
+      "author": "조원재",
+      "price": 15000
+    },
+    {
+      "id": 2,
+      "title": "빈센트 반고흐",
+      "author": "김영숙",
+      "price": 18000
+    },
+    {
+      "id": 3,
+      "title": "숲으로 간 미술관",
+      "author": "이은화",
+      "price": 11000
+    },
+    {
+      "id": 4,
+      "title": "수채화를 그리는 시간",
+      "author": "관춘",
+      "price": 25000
+    }
+  ],
+  "profiles": [
+    {
+      "id": "purple",
+      "name": "Hong gil dong",
+      "password": "test",
+      "email": "test@daum.net",
+      "gender": "male"
+    },
+    {
+      "id": "admin",
+      "name": "Lee sun sin",
+      "password": "test",
+      "email": "admin@daum.net",
+      "gender": "female"
+    }
+  ]
+}

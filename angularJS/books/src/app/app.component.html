@@ -4,9 +4,13 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -16,14 +20,21 @@
       <a class="navbar-brand" href="#">Top Credu Books</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a routerLink="book">Home</a></li>
       <li><a routerLink="book">list</a></li>
-      <li><a routerLink="signUp">Sign Up</a></li>
-      <li><a href="#">Sign In</a></li>
-      <li><a href="#">Sign Out</a></li>
+      <li><a routerLink="signUpForm">Sign Up</a></li>
+      <li><a routerLink="signInForm">Sign In</a></li>
+      <li><a routerLink="profile">My Profile</a></li>
+      <li><a [routerLink]="['/','signOut']">Sign Out</a></li>
+      <li><a routerLink="login-test">login-test</a></li>
     </ul>
   </div>
 </nav>
+<div>
+  {{isLogin}}
+
+
+</div>
 
 <div class="container">
   <router-outlet></router-outlet>
