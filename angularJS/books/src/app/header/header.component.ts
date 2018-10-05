@@ -1,14 +1,13 @@
 import { Component, OnInit, EventEmitter, Output, Input  } from '@angular/core';
-import { SignInOutService } from '../../services/sign-in-out.service';
+import { SignInOutService } from '../services/sign-in-out.service';
 import { Router } from '@angular/router';
-// import { User } from '../model/user';
 
 @Component({
-  selector: 'app-in-out',
-  templateUrl: './in-out.component.html',
-  styleUrls: ['./in-out.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class InOutComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   constructor(private signInOut : SignInOutService, private router: Router) { }
 
@@ -30,13 +29,12 @@ export class InOutComponent implements OnInit {
   }
 
   signIn(){
-
+    console.log('login test');
     this.signInOut.signIn(this.user.id, this.user.pwd)
         .then( data => {
         if(data !== null){
           sessionStorage.setItem('currentUser', this.user.id);
           this.isLogin  =  true;
-          console.log(this.isLogin);
           this.router.navigate(['book']);
         }
 
@@ -48,8 +46,12 @@ export class InOutComponent implements OnInit {
     });
   }
 
-  //
-  // signOut(){
-  //   sessionStorage.removeItem('currentUser');
-  // }
+
+  signOut(){
+    //  sessionStorage.removeItem('currentUser');
+    //this.signInOut.signOut();
+    sessionStorage.removeItem('currentUser');
+    this.router.navigate(['login']);
+  }
+
 }

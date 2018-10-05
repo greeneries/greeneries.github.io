@@ -29,9 +29,9 @@
     {
       "id": "purple",
       "name": "Hong gil dong",
-      "password": "test",
-      "email": "test@daum.net",
-      "gender": "male"
+      "email": "test11122@daum.net",
+      "gender": "male",
+      "pwd": "test"
     },
     {
       "id": "admin",

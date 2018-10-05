@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { UpComponent } from './sign/up/up.component';
 import { InOutComponent } from './sign/in-out/in-out.component';
 import { BookComponent } from './book/book.component';
-import { LoginTestComponent } from './login-test/login-test.component';
 import { UpdateFormComponent } from './profile/update-form/update-form.component';
 import { ProfileComponent } from './profile/profile/profile.component';
+import { HeaderComponent } from './header/header.component';
+
 
 @NgModule({
   declarations: [
@@ -17,9 +18,9 @@ import { ProfileComponent } from './profile/profile/profile.component';
     UpComponent,
     InOutComponent,
     BookComponent,
-    LoginTestComponent,
     UpdateFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

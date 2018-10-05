@@ -1,11 +1,10 @@
 <!-- https://bootsnipp.com/snippets/0BVEA -->
-update form
 <div class="container">
-    <form class="form-horizontal" (ngSubmit)="updateProfile()" #f="ngForm" name="form" role="form">
+    <form class="form-horizontal" (ngSubmit)="f.form.valid && signUp()" #f="ngForm" name="form" role="form">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <h2>Update My Profile</h2>
+                <h2>Create your personal account</h2>
                 <hr>
             </div>
         </div>
@@ -100,6 +99,26 @@ update form
 
         <div class="row">
             <div class="col-md-3 field-label-responsive">
+                <label for="password">Confirm Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem">
+                            <i class="fa fa-repeat"></i>
+                        </div>
+                        <input type="password" name="password-confirmation" class="form-control"
+                                placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
                 <label for="gender">Gender</label>
             </div>
             <div class="col-md-6">
@@ -120,7 +139,7 @@ update form
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <button  type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Update </button>
+                <button  [disabled]="!f.valid" type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Create </button>
             </div>
         </div>
     </form>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-//import { SignInOutService } from './services/sign-in-out.service';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'books';
-
-
-  constructor(){
-
-  }
-  ngOnInit() {
-
-    console.log("AppComponent is called. ngOnInit()");
-  }
-
-
-
+  title = 'topcredu-books';
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { User } from '../model/user';
+import { Profile } from '../model/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +10,19 @@ export class ProfileService {
   constructor() { }
 
 
-  getProfile(id: string) : Promise<User>{
+  getProfile(id: string) : Promise<Profile>{
     return axios.get(this.URL + id)
     .then(function (response){
-      console.log(response.data);
       return response.data;
     });
   }
 
-  updateProfile(user : User): void{
-    console.log('updateProfle');
-    // user를 json으로
-    console.log('to JSON: ',JSON.stringify(user));
-    axios.put(this.URL + user.id, user)
+  updateProfile(profile : Profile): void{
+    axios.put(this.URL + profile.id, profile)
     .then( function (response){
       console.log('update!!!');
+      console.log('response.data : ' + response);
+      console.log(typeof response.data);
       console.log('response.data : ' + response.data);
     }).catch(function(error){
       console.log(error);
@@ -32,4 +30,12 @@ export class ProfileService {
 
   }
 
- }
+  signUp (profile: Profile) : Promise<any>{
+    return axios.post(this.URL, profile)
+        .then(function(response){
+        console.log(response.data);
+        return response.data;
+    });
+  }
+
+}

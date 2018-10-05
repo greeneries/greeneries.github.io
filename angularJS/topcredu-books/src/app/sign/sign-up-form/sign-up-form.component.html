@@ -1,0 +1,148 @@
+<!-- https://bootsnipp.com/snippets/0BVEA -->
+<div class="container">
+    <form class="form-horizontal" (ngSubmit)="signUp()" [formGroup]="signUpForm" >
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Create your personal account</h2>
+                <hr>
+            </div>
+        </div>
+
+        <!-- ID  -->
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="id">ID</label>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                        <input type="text" class="form-control" formControlName="id" name="id"
+                               placeholder="your ID" autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" *ngIf="signUpForm.controls['id'].touched" [hidden]="signUpForm.controls['id'].valid">
+                <div>
+                    <span class="text-danger align-middle">
+                        {{idErrorMessage}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Name  -->
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">Name</label>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                        <input type="text" name="name" class="form-control" formControlName="name" placeholder="your name">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" *ngIf="signUpForm.controls['name'].touched" [hidden]="signUpForm.controls['name'].valid">
+                <div>
+                    <span class="text-danger align-middle">
+                        {{nameErrorMessage}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email  -->
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="email">E-Mail Address</label>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <input type="text" name="email" class="form-control" formControlName="email" placeholder="you@example.com">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" *ngIf="signUpForm.controls['email'].touched" [hidden]="signUpForm.controls['email'].valid">
+                <div>
+                    <span class="text-danger align-middle">
+                        {{emailErrorMessage}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Password</label>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group has-danger">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                        <input type="password" name="password" class="form-control" formControlName="pwd" placeholder="Password">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" *ngIf="signUpForm.controls['pwd'].touched" [hidden]="signUpForm.controls['pwd'].valid">
+                <div>
+                    <span class="text-danger align-middle">
+                        {{pwdErrorMessage}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Confirm Password</label>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem">
+                            <i class="fa fa-repeat"></i>
+                        </div>
+                        <input type="password" name="password-confirmation" formControlName="confirmPassword" class="form-control"  placeholder="Password">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" *ngIf="signUpForm.controls['pwd'].value !== signUpForm.controls['confirmPassword'].value" [hidden]="signUpForm.controls['confirmPassword'].valid">
+                <div>
+                    <span class="text-danger align-middle">
+                        Passwords do not match
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="gender">Gender</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="radio">
+                          <label><input type="radio" name="gender" formControlName="gender" value="male" checked>남자</label>
+                          <label><input type="radio" name="gender" formControlName="gender" value="female" >여자</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <!-- [disabled]="!signUpForm.valid"   -->
+                <button  type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Create </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -25,5 +25,6 @@ export class UpComponent implements OnInit {
       console.log('UpComponent:'+ data);
     });
   }
+  // Registration successful
 
 }

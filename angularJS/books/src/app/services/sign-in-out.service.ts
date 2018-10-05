@@ -11,14 +11,15 @@ import { User } from '../model/user';
 export class SignInOutService {
   URL: string = "http://localhost:3000/profiles/";
 
-
-  constructor() { }
+  constructor() {
+  }
 
   signIn(id : string, pwd : string) : Promise<User>{
+    // console.log('signIn:::::::::::');
     return axios.get(this.URL + id)
         .then(function(response){
-          if(response.data.id == id && response.data.password == pwd){
-              //localStorage.setItem('currentUser', JSON.stringify(response.data));
+          if(response.data.id === id && response.data.pwd === pwd){
+              //sessionStorage.setItem('currentUser', this.user.id);
               return response.data;
           }
         return null;
@@ -27,9 +28,7 @@ export class SignInOutService {
 
   signOut(){
     console.log('로그 아웃 했음');
-    localStorage.removeItem('currentUser');
+    //sessionStorage.removeItem('currentUser');
   }
-
-
 
 }

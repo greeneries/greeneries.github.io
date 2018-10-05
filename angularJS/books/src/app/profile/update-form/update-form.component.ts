@@ -10,7 +10,7 @@ import { ProfileService } from '../../services/profile.service';
 export class UpdateFormComponent implements OnInit {
 
   constructor(private profileService: ProfileService) { }
-  user = {id:'', name:'', email:'' , gender:''};
+  user = {id:'', name:'', email:'' , gender:'', pwd:''};
 
   ngOnInit() {
 
@@ -26,6 +26,6 @@ export class UpdateFormComponent implements OnInit {
   }
 
   updateProfile(){
-
+    this.profileService.updateProfile(this.user);
   }
 }
