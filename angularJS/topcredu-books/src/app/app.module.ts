@@ -13,6 +13,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from './services/profile.service';
 import { UpdateFormComponent } from './profile/update-form/update-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookDetailComponent } from './book/detail/book-detail/book-detail.component';
+import { CartComponent } from './book/cart/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignUpFormComponent,
     BookComponent,
     ProfileComponent,
-    UpdateFormComponent
+    UpdateFormComponent,
+    BookDetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

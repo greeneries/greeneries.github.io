@@ -1,0 +1,31 @@
+
+<hr/>
+<div class="container">
+    <table class="table">
+      <tr>
+        <td rowspan="3"><img src="{{book.url}}" width=300px, height=400px  class="img-rounded" alt="Cinque Terre"></td>
+      </tr>
+      <tr>
+        <!-- <td>{{book.id}}</td> -->
+        <td>
+          <h3>{{book.title}} </h3> <br />
+          <div>
+            {{book.author}} | {{book.publisher}} | {{book.date}}
+          </div> <br />
+          <div>
+            정가 : <font color="red"><b>{{book.price}} 원 </b></font>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><button type="button" class="btn" (click)="addCart(book.id)">장바구니에 담기</button> &nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn" [routerLink]=" ['../../']">목록으로 돌아가기</button>
+        </td>
+      </tr>
+    </table>
+</div>
+<div>
+
+</div>
+
+<!-- <a [routerLink]="['book-detail', book.id]">{{book.title}}</a> -->

@@ -1,0 +1,19 @@
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product No.</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+    </thead>
+      <tr *ngFor="let cart of carts">
+        <td>{{cart.id}}</td>
+        <td>{{cart.title}}</td>
+        <!-- [routerLink]="['book-detail', book.id]"> -->
+        <td>{{cart.price}}원</td>
+        <td>{{cart.quantity}}</td>
+      </tr>
+    </table>
+</div>
