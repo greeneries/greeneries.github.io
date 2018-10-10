@@ -15,6 +15,11 @@ import { UpdateFormComponent } from './profile/update-form/update-form.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookDetailComponent } from './book/detail/book-detail/book-detail.component';
 import { CartComponent } from './book/cart/cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
+import { CreditTransferComponent } from './payment/waystopay/credit-transfer/credit-transfer.component';
+import { EasyPaymentComponent } from './payment/waystopay/easy-payment/easy-payment.component';
+import { CommonComponent } from './payment/waystopay/common/common.component';
+import { CreditCardComponent } from './payment/waystopay/credit-card/credit-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { CartComponent } from './book/cart/cart/cart.component';
     ProfileComponent,
     UpdateFormComponent,
     BookDetailComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent,
+    CreditTransferComponent,
+    EasyPaymentComponent,
+    CommonComponent,
+    CreditCardComponent
   ],
   imports: [
     BrowserModule,

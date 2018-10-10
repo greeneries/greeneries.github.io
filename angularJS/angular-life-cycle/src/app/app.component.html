@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+</head>
+<body>
+
+  <div class="bs-example">
+    <ul class="nav nav-pills">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> <a routerLink="book">Book</a> </li>
+      <li class="dropdown" routerLinkActive="active"> <a routerLink="book" data-toggle="dropdown" class="dropdown-toggle"># <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="#">#</a></li>
+          <li class="divider"></li>
+          <li><a routerLink="#">#</a></li>
+        </ul>
+      </li>
+
+    </ul>
+    <hr />
+    <div class="margin">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</body>
+</html>

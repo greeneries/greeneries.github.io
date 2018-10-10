@@ -1,0 +1,109 @@
+<div class="container">
+    <form class="form-horizontal" (ngSubmit)="goCharge()" [formGroup]="paymentForm">
+
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="credit">신용카드</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="radio">
+                        <label><input type="radio" name="payment" name="payment" formControlName="payment" (click)="displayPayment('credit_card','1')" value="1" checked>신용카드</label>
+                        <!-- <label><input type="radio" name="payment" name="payment" formControlName="payment" (click)="displayPayment('credit_card','2')" value="2" >제휴할인카드</label>
+                        <label><input type="radio" name="payment" name="payment" formControlName="payment" (click)="displayPayment('credit_card','3')" value="3" >해외발급신용카드</label> -->
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="credit_transfer">무통장 입금</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="radio">
+                        <!-- <label><input type="radio" name="payment" formControlName="payment" (click)="displayPayment('trasfer','4')"  value="4" >계좌이체</label> -->
+                        <label><input type="radio" name="payment" formControlName="payment" (click)="displayPayment('trasfer','5')"  value="5" >무통장입금</label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-3 field-label-responsive">
+              <label for="easy_payment">간편결제</label>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="radio">
+                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','6')" value="6">카카오페이</label>
+                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','7')" value="7">Kpay</label>
+                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','8')" value="8">PayCO</label>
+                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','9')" value="9">11Pay</label>
+                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','10')" value="10">NaverPay</label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  <div>
+    <h3>결제방법</h3>
+
+    <!--  신용카드 결제 -->
+    <div [ngStyle]="creditIsActive?{display:'block'}:{display:'none'}" >
+      카드사 선택
+      <select title="Pick a card" class="selectpicker" formControlName="creditCard">
+        <option value="none">카드사 선택</option>
+        <option value="hana">하나카드</option>
+        <option value="woori">우리카드</option>
+        <option value="sinhan">신한카드</option>
+        <option value="min">국민카드</option>
+        <option value="visa">비자카드</option>
+        <option value="kakao">카카오뱅크</option>
+      </select>
+      <app-credit-card></app-credit-card>
+    </div>
+
+    <!-- 무통장 입금 -->
+   <div [ngStyle]="transferIsActive?{display:'block'}:{display:'none'}" >
+     입금은행
+     <select title="Pick a bank" class="selectpicker" formControlName="bankType">
+       <option value="none">입금하실 은행 선택</option>
+       <option value="company">기업은행</option>
+       <option value="woori">우리은행</option>
+       <option value="nonghyup">농협</option>
+       <option value="min">국민은행</option>
+       <option value="woochguk">우체국</option>
+       <option value="sinhan">신한은행</option>
+     </select>
+
+     <br/>
+     입금자 <input type="text" name="name"  formControlName="transferName" placeholder="your name">
+
+       <app-credit-transfer></app-credit-transfer>
+   </div>
+
+    <!-- 간편 결제 -->
+    <div [ngStyle]="easyIsActive?{display:'block'}:{display:'none'}" >
+      <!--
+        부모가 자식 엘레먼트에게  selectedPayment 값을 넘기고
+        자식은  @Input을 이용해서 부모로부터 값을 넘겨 받는다.
+      -->
+      <app-easy-payment [selectedPayment]="selected_payment"></app-easy-payment>
+    </div>
+
+    <!--  문화비소득공제 안내  -->
+    <app-common></app-common>
+
+  </div>
+
+    <button  type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> 결제 </button>
+</form>

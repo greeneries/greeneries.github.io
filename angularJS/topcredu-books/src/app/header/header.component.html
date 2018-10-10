@@ -13,6 +13,7 @@
       <li *ngIf="!isLogin"><a routerLink="signUpForm">Sign Up</a></li><!-- 가입하기  -->
       <li *ngIf="isLogin"> <a [routerLink]="" (click)="signOut()">Sign Out</a></li> <!-- 로그아웃 -->
       <li><a routerLink="cart-list">Cart</a></li>
+      <li><a routerLink="payment">Payment</a></li>
       <!-- <li class="checkout">
 
         <a href="#">

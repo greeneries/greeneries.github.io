@@ -1,0 +1,31 @@
+<h2>{{title}}</h2>
+<input type="text" [(ngModel)]="message" name="message" placeholder="바인딩 있음"><br/>
+<input type="text" placeholder="바인딩 없음" [hidden]="prop">
+{{ishidden}}
+<!-- <p [hidden]="ishidden">
+  <input type="text" placeholder="test">
+</p>
+<p *ngIf="ishidden">
+  <input type="text" placeholder="test">
+</p> -->
+<!-- <div style="display:block;">
+  <input type="text" placeholder="hahaha">
+</div> -->
+<!-- <div style="ishidden ? 'display:block': 'display:none'">
+  <input type="text" placeholder="hahaha">
+</div> -->
+<!--
+<div ng-show="ishidden">
+  <input type="text" placeholder="hohohohoho">
+</div>
+-->
+
+<div [ngStyle]="ishidden?{display:'block'}:{display:'none'}" >
+  <input type="text" placeholder="hohohohoho">
+</div>
+
+<button  type="submit" class="btn btn-success" [disabled]="ishidden"><i class="fa fa-user-plus"></i> Create </button>
+<!-- display:none -->
+<!-- ng-class="{ is_checked: 'checked' }" -->
+<!-- ng-show -->
+<!-- [ngStyle]="{background: 'red'}" -->
