@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>Vue with Axios Sample</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.d_true {
+	text-decoration: line-through;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container" id="app">
+    <h1>Caculator</h1>
+    <form class="" action="index.html" method="post">
+      <input type="text" v-model.number="value1" size="5" maxlength="5"  />
+			<select name="selectlist"  v-model="selectlist">
+				<option value="plus">+</option>
+				<option value="minus">-</option>
+				<option value="multiply">*</option>
+				<option value="divide">/</option>
+			</select>
+      <input type="text"  v-model.number="value2"  size="5" maxlength="5"  />
+      <button type="button" name="button" v-on:click="calculateData" >show</button>
+    </form>
+    <h1>Result: {{ result }}</h1>
+		<pre>
+			{{$data}}
+		</pre>
+</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data:{
+					selectlist : 'plus',
+					value1: null,
+					value2: null,
+          result: null
+				},
+				methods: {
+					calculateData : function(){
+						console.log(this.selectlist);
+						// switch(this.selectlist){
+						// 	case 'plus':
+						// 		console.log("plus");
+						// 		break;
+						// 	case 'minus':
+						// 		console.log('minus');
+						// 		break;
+						// 	case 'multiply':
+						// 		console.log('multiply');
+						// 		break;
+						// 	case 'divide':
+						// 		console.log('divide');
+						// 		break;
+						// 	default:
+						// 		console.log('plus');
+						// }
+
+						if(this.selectlist == "plus"){
+							this.result = Number(this.value1) + Number(this.value2);
+						}else if(this.selectlist == "minus"){
+							this.result = Number(this.value1) - Number(this.value2);
+						}else if(this.selectlist == "multiply"){
+							this.result = Number(this.value1) * Number(this.value2);
+						}else if(this.selectlist == "divide"){
+							this.result = Number(this.value1) / Number(this.value2);
+						}else{
+							this.result = Number(this.value1) + Number(this.value2);
+						}
+
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

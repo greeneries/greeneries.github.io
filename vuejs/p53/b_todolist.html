@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <style media="screen">
+    .through {
+    text-decoration: line-through;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>To Do List</h1>
+    <div class="container">
+      <input type="text" v-on:keyup.13="setTodo" placeholder="할 일 입력 후 엔터">
+      <table class=".table-bordered">
+        <ul>
+          <li v-for="s in list">
+            <div v-bind:class="{ through: s.isActive }">
+              No:{{s.id}} 할일:{{s.value}}
+              <button type="button" class="btn btn-danger" v-on:click="delList(s)">제거</button>
+              <button type="button" class="btn" v-on:click="setThrough(s)">했다</button>
+            </div>
+          </li>
+        </ul>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  <script type="text/javascript">
+    new Vue({
+      el: '#app',
+      data: {
+        list: [],
+        num: 0,
+        isActive: false,
+      },
+      methods: {
+        setTodo: function(e) {
+          let listNo = {
+            id: this.num,
+            value: e.target.value,
+            isActive: this.isActive
+          };
+          this.list.push(listNo);
+          console.log(this.list);
+          e.target.value = '';
+          this.num++;
+        },
+        setThrough: function(s) {
+          let index = this.list.findIndex(a => a.id === s.id && a.value === s.value);
+          this.list[index].isActive = !this.list[index].isActive;
+          console.log(this.list[index].isActive);
+        },
+        delList: function(s) {
+          let index = this.list.findIndex(a => a.id === s.id && a.value === s.value);
+          this.list.splice(index, 1);
+          this.num--;
+        }
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>
