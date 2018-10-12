@@ -1,5 +1,38 @@
 <div class="container">
     <form class="form-horizontal" (ngSubmit)="goCharge()" [formGroup]="paymentForm">
+      <div class="row">
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="credit"><h3>상품 확인</h3></label>
+                <hr class="hr_style">
+                <div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>상품 번호</th>
+                        <th>책 이름</th>
+                        <th>가격</th>
+                        <th>수량</th>
+                        <th>합계</th>
+                      </tr>
+                  </thead>
+                    <tr *ngFor="let cart of carts">
+                      <td>{{cart.id}}</td>
+                      <td>{{cart.title}}</td>
+                      <td>{{cart.price | currency:'KRW'}}</td>
+                      <td>{{cart.quantity}}권</td>
+                      <td>{{cart.total | currency:'KRW'}}</td>
+                    </tr>
+                  </table>
+                </div>
+
+                <div class="total">
+                  최종 결제 금액: {{ total | currency:'KRW'}}원
+                </div>
+            </div>
+        </div>
+
 
       <div class="row">
           <div class="col-md-3 field-label-responsive">
@@ -10,8 +43,6 @@
                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                       <div class="radio">
                         <label><input type="radio" name="payment" name="payment" formControlName="payment" (click)="displayPayment('credit_card','1')" value="1" checked>신용카드</label>
-                        <!-- <label><input type="radio" name="payment" name="payment" formControlName="payment" (click)="displayPayment('credit_card','2')" value="2" >제휴할인카드</label>
-                        <label><input type="radio" name="payment" name="payment" formControlName="payment" (click)="displayPayment('credit_card','3')" value="3" >해외발급신용카드</label> -->
                       </div>
                   </div>
               </div>
@@ -27,13 +58,13 @@
               <div class="form-group">
                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                       <div class="radio">
-                        <!-- <label><input type="radio" name="payment" formControlName="payment" (click)="displayPayment('trasfer','4')"  value="4" >계좌이체</label> -->
                         <label><input type="radio" name="payment" formControlName="payment" (click)="displayPayment('trasfer','5')"  value="5" >무통장입금</label>
                       </div>
                   </div>
               </div>
           </div>
       </div>
+
 
       <div class="row">
           <div class="col-md-3 field-label-responsive">
@@ -43,53 +74,81 @@
               <div class="form-group">
                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                       <div class="radio">
-                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','6')" value="6">카카오페이</label>
-                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','7')" value="7">Kpay</label>
-                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','8')" value="8">PayCO</label>
-                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','9')" value="9">11Pay</label>
-                        <label><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','10')" value="10">NaverPay</label>
+                        <label class="radio_margin"><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','6')" value="6">카카오페이</label>
+                        <label class="radio_margin"><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','7')" value="7">Kpay</label>
+                        <label class="radio_margin"><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','8')" value="8">PayCO</label>
+                        <label class="radio_margin"><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','9')" value="9">11Pay</label>
+                        <label class="radio_margin"><input type="radio" name="payment" formControlName="payment"  (click)="displayPayment('easypayment','10')" value="10">NaverPay</label>
                       </div>
                   </div>
               </div>
           </div>
       </div>
 
-  <div>
-    <h3>결제방법</h3>
 
-    <!--  신용카드 결제 -->
-    <div [ngStyle]="creditIsActive?{display:'block'}:{display:'none'}" >
-      카드사 선택
-      <select title="Pick a card" class="selectpicker" formControlName="creditCard">
-        <option value="none">카드사 선택</option>
-        <option value="hana">하나카드</option>
-        <option value="woori">우리카드</option>
-        <option value="sinhan">신한카드</option>
-        <option value="min">국민카드</option>
-        <option value="visa">비자카드</option>
-        <option value="kakao">카카오뱅크</option>
-      </select>
-      <app-credit-card></app-credit-card>
+    <h3>결제방법</h3>
+    <hr class="second_style">
+
+
+    <div class="row" [ngStyle]="creditIsActive?{display:'block'}:{display:'none'}">
+        <div class="col-md-3 field-label-responsive">
+            <label for="name">카드사 선택</label>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <select title="Pick a card" class="selectpicker" formControlName="creditCard">
+                    <option value="none">카드사 선택</option>
+                    <option value="hana">하나카드</option>
+                    <option value="woori">우리카드</option>
+                    <option value="sinhan">신한카드</option>
+                    <option value="min">국민카드</option>
+                    <option value="visa">비자카드</option>
+                    <option value="kakao">카카오뱅크</option>
+                  </select>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- 무통장 입금 -->
-   <div [ngStyle]="transferIsActive?{display:'block'}:{display:'none'}" >
-     입금은행
-     <select title="Pick a bank" class="selectpicker" formControlName="bankType">
-       <option value="none">입금하실 은행 선택</option>
-       <option value="company">기업은행</option>
-       <option value="woori">우리은행</option>
-       <option value="nonghyup">농협</option>
-       <option value="min">국민은행</option>
-       <option value="woochguk">우체국</option>
-       <option value="sinhan">신한은행</option>
-     </select>
 
-     <br/>
-     입금자 <input type="text" name="name"  formControlName="transferName" placeholder="your name">
 
-       <app-credit-transfer></app-credit-transfer>
-   </div>
+     <div class="row" [ngStyle]="transferIsActive?{display:'block'}:{display:'none'}">
+         <div class="col-md-3 field-label-responsive">
+             <label for="name">입금은행</label>
+         </div>
+         <div class="col-md-4">
+             <div class="form-group">
+                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                     <select title="Pick a bank" class="selectpicker" formControlName="bankType">
+                       <option value="none">입금하실 은행 선택</option>
+                       <option value="company">기업은행</option>
+                       <option value="woori">우리은행</option>
+                       <option value="nonghyup">농협</option>
+                       <option value="min">국민은행</option>
+                       <option value="woochguk">우체국</option>
+                       <option value="sinhan">신한은행</option>
+                     </select>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+
+    <div class="row" [ngStyle]="transferIsActive?{display:'block'}:{display:'none'}">
+        <div class="col-md-3 field-label-responsive">
+            <label for="name">입금자</label>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <input type="text" name="name" class="form-control" formControlName="transferName" placeholder="your name">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-credit-transfer [ngStyle]="transferIsActive?{display:'block'}:{display:'none'}"></app-credit-transfer>
 
     <!-- 간편 결제 -->
     <div [ngStyle]="easyIsActive?{display:'block'}:{display:'none'}" >

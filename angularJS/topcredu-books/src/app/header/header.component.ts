@@ -3,8 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 //import { Observable } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -21,17 +19,38 @@ export class HeaderComponent implements OnInit {
           email:'',
           gender: ''};
 
-   // isLogin: Observable<boolean>;
   isLogin = false;
 
   ngOnInit() {
-      this.isLogin = this.authService.isLogin;
-      console.log('ngOnInit');
+    this.signIn();
+    this.isLogin = this.authService.isLogin;
   }
 
-  ngAfterContentChecked(){
-    this.isLogin = this.authService.isLogin;
-    console.log('ngAfterContentChecked');
+  signIn(){
+    // 로그인 또는 로그아웃 상태 값 변경 감지
+    this.authService.getObservable().subscribe(
+      message => {
+        console.log('message.next: ',message.type);
+        if (message.type === 'success') {
+          this.isLogin = true;
+          console.log('success');
+        } else {
+          this.isLogin = false;
+          console.log('fail');
+        }
+      }
+    );
+
+  }
+
+
+  // ngAfterContentChecked(){
+  //   this.isLogin = this.authService.isLogin;
+  //   console.log('ngAfterContentChecked');
+  // }
+
+  ngAfterContentInit(){
+    //this.isLogin = this.authService.isLogin;
   }
 
   signOut(){

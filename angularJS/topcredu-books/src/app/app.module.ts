@@ -20,6 +20,7 @@ import { CreditTransferComponent } from './payment/waystopay/credit-transfer/cre
 import { EasyPaymentComponent } from './payment/waystopay/easy-payment/easy-payment.component';
 import { CommonComponent } from './payment/waystopay/common/common.component';
 import { CreditCardComponent } from './payment/waystopay/credit-card/credit-card.component';
+import { PaymentService } from './services/payment.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { CreditCardComponent } from './payment/waystopay/credit-card/credit-card
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, BookService, ProfileService],
+  providers: [AuthService, BookService, ProfileService, PaymentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

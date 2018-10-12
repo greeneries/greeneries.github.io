@@ -5,7 +5,7 @@
       "title": "방구석 미술관",
       "author": "조원재",
       "publisher": "블랙피쉬",
-      "date" : "2018년 03월 30일",
+      "date": "2018년 03월 30일",
       "price": 15000,
       "url": "../../../assets/arts/museum.JPG"
     },
@@ -14,7 +14,7 @@
       "title": "빈센트 반고흐",
       "author": "김영숙",
       "publisher": "유화컴퍼니 ",
-      "date" : "2018년 03월 30일",
+      "date": "2018년 03월 30일",
       "price": 25200,
       "url": "../../../assets/arts/vincent.JPG"
     },
@@ -23,7 +23,7 @@
       "title": "숲으로 간 미술관",
       "author": "이은화",
       "publisher": "아트북스",
-      "date" : "2015년 12월 18일",
+      "date": "2015년 12월 18일",
       "price": 11000,
       "url": "../../../assets/arts/forest.JPG"
     },
@@ -32,7 +32,7 @@
       "title": "나의 첫 수채화 캘리그라피 ",
       "author": "이명선",
       "publisher": "경향비피",
-      "date" : "2017년 09월 06일",
+      "date": "2017년 09월 06일",
       "price": 13500,
       "url": "../../../assets/arts/water_color.JPG"
     }
@@ -41,7 +41,7 @@
     {
       "id": "purple",
       "name": "Hong gil dong",
-      "email": "test11122@daum.net",
+      "email": "hadfha111@daum.net",
       "gender": "male",
       "pwd": "test"
     },

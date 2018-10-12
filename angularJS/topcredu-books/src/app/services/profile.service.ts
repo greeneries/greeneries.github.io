@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Profile } from '../model/profile';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
   URL: string = "http://localhost:3000/profiles/";
-  constructor() { }
 
+  constructor(private router: Router) { }
 
   getProfile(id: string) : Promise<Profile>{
     return axios.get(this.URL + id)
@@ -18,14 +19,13 @@ export class ProfileService {
   }
 
   updateProfile(profile : Profile): void{
+    let self = this;
     axios.put(this.URL + profile.id, profile)
-    .then( function (response){
-      console.log('update!!!');
-      console.log('response.data : ' + response);
-      console.log(typeof response.data);
-      console.log('response.data : ' + response.data);
-    }).catch(function(error){
-      console.log(error);
+      .then( function (response){
+        console.log('response.data : ' + response);
+        self.router.navigate(['profile']);
+      }).catch(function(error){
+        console.log(error);
     });
 
   }

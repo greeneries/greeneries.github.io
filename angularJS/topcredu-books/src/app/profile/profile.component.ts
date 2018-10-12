@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService, private router: Router) { }
 
   ngOnInit() {
-    console.log('ProfileComponent is called');
     this.profileService.getProfile(sessionStorage.getItem('currentUser')).then(data => {
       this.profile.id = data.id;
       this.profile.name = data.name;

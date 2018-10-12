@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CartService } from '../services/cart.service';
+import { Cart } from '../model/cart';
 
 @Component({
   selector: 'app-payment',
@@ -17,24 +19,32 @@ export class PaymentComponent implements OnInit {
   selected_payment;
 
   paymentForm: FormGroup = new FormGroup({
-      payment: new FormControl('1',Validators.required),
+      payment: new FormControl('1', Validators.required),
       creditCard: new FormControl('none'),
       bankType : new FormControl('none'),
       transferName: new FormControl(''),
   });
 
-  constructor() { }
+  carts : Cart[] = [];
+  total = 0;
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
-
+    this.goCharge();
   }
 
   goCharge(){
 
-    console.log('결제 방식 선택 : ',this.paymentForm.controls.payment.value);
-    console.log('신용카드 선택 : ',this.paymentForm.controls.creditCard.value);
-    console.log('무통장 입금 은행 선택 : ',this.paymentForm.controls.bankType.value);
-    console.log('무통장 입금 입금자 : ',this.paymentForm.controls.transferName.value);
+    console.log('결제 방식 선택 : ', this.paymentForm.controls.payment.value);
+    console.log('신용카드 선택 : ', this.paymentForm.controls.creditCard.value);
+    console.log('무통장 입금 은행 선택 : ', this.paymentForm.controls.bankType.value);
+    console.log('무통장 입금 입금자 : ', this.paymentForm.controls.transferName.value);
+
+    this.carts = this.cartService.getCart();
+
+    this.total = this.cartService.calculate(this.carts);
+    //console.log(this.carts);
+
   }
 
   initialize(){

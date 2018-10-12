@@ -20,10 +20,11 @@ export class BookService {
   getBook(id) : Promise<Book>{
     return axios.get(this.URL + id)
           .then(function(response){
-        //    console.log(response.data);
             return response.data;
     });
   }
+
+
 
   goSearch(title) : Promise<Book>{
       return axios.get(this.URL + title)

@@ -3,4 +3,5 @@ export class Cart {
   public title: string;
   public price: number;
   public quantity: number;
+  public total: number;
 }
