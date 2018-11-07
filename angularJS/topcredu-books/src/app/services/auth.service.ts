@@ -12,9 +12,11 @@ export class AuthService {
   private login = false;
   URL: string = "http://localhost:3000/profiles/";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   get isLogin(){
+    console.log('AuthService: isLogin getter() is called.');
     if(sessionStorage.getItem('currentUser')){
       return true;
     }
@@ -22,20 +24,19 @@ export class AuthService {
   }
 
   set isLogin(isLogin){
+    console.log('AuthService: isLogin setter() is called.');
     this.login = isLogin;
   }
 
   signIn(id : string, pwd : string){
+    console.log('AuthService: sign() is called.');
     return axios.get(this.URL + id)
         .then(response => {
           if(response.data.id === id && response.data.pwd === pwd){
               sessionStorage.setItem('currentUser', response.data.id);
-              //this.login.next(true);
-              // this.login = true;
               this.subject.next({ type: 'success' }); // 로그인 성공 알리기
               this.router.navigate(['/']);
-              // return response.data;
-          }else if(response.data.id !== id || response.data.pwd !== pwd){
+          }else{
               this.subject.next({ type: 'fail' }); // 로그인 실패 알리기
               return "ID or Password is incorrect.";
           }

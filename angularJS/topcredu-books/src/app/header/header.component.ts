@@ -22,21 +22,20 @@ export class HeaderComponent implements OnInit {
   isLogin = false;
 
   ngOnInit() {
+    console.log('HeaderComponent:  ngOnInit() is called.');
     this.signIn();
     this.isLogin = this.authService.isLogin;
   }
 
   signIn(){
+    console.log('HeaderComponent: signIn() is called.');
     // 로그인 또는 로그아웃 상태 값 변경 감지
     this.authService.getObservable().subscribe(
       message => {
-        console.log('message.next: ',message.type);
         if (message.type === 'success') {
           this.isLogin = true;
-          console.log('success');
         } else {
           this.isLogin = false;
-          console.log('fail');
         }
       }
     );
