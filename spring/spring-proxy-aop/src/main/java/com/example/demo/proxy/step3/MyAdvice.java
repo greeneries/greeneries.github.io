@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 
+// 기존의 Proxy 클래스는 Hello 구현체만 프록싱 할 수 있었으나
+// MyAdvice는 어떠한 타겟 객체도 프록싱할 수 있다.
 public class MyAdvice implements InvocationHandler{
 
 	// 어떠한 타켓 객체도 취급할 수 있도록 Object 자료형으로 저장한다. 
