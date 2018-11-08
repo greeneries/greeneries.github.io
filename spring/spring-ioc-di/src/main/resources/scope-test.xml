@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- 컨테이너는 bean을 싱글톤 패턴으로 관리한다. 그래서 요청시 마다 매번 객체를 새로 생성하는 게 아니라 기존 객체를 주는 데 
+		 vo 또는 dto를 싱글톤 패턴으로 만들경우 요청 중간에 값이 변경되는 문제가 발생한다.
+		 그래서 일반적으로 vo나 dto는 bean으로 등록하지 않지만 
+		 꼭 bean으로 등록해서 사용해야 하는경우 scope="prototype"을 주면 bean객체는 요청 시마다
+		 매번 새로 만든다. 
+	-->
+	<bean id="car" class="com.example.demo.scope.Car" scope="prototype">
+		<property name="name" value="Sonata"></property>
+		<property name="maker" value="Hyundai"></property>
+	</bean>
+	
+	<bean id="car3" class="com.example.demo.scope.Car3">
+		<property name="name" value="Sonata"></property>
+		<property name="maker" value="Hyundai"></property>
+	</bean>
+	
+	<context:annotation-config/>
+	<context:component-scan base-package="com.example.demo.scope"></context:component-scan>
+	
+
+</beans>      

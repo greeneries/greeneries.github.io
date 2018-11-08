@@ -8,7 +8,7 @@ public class Test {
 
 	/*
 	 * spring에게 관계를 위임하는 방법
-		- annotation을 사용하는 방법 
+		- annotation을 사용하는 방법 : 스프링 3.X에서 도입 
 	 */
 		
 	public static void main(String[] args) {

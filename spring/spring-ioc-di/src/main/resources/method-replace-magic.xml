@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="myReplacer" class="com.example.ioc.replacer.MyReplacer"></bean>
+
+
+	<bean id="magicBox" class="com.example.ioc.replacer.MagicBox">
+		<!-- open 메소드가 리턴하는 값을 가로채서 다른 걸 리턴한다. -->
+		<replaced-method name="open" replacer="myReplacer"></replaced-method>
+	</bean>
+	
+
+	<bean id="magician" class="com.example.ioc.replacer.Magician">
+		<!-- 마술사가 마술을 하기 위해서 마술 상자를 줘야 함. 
+			 마술상자 객체를 DI함.(Dependency Injection) 
+		-->
+		<property name="box" ref="magicBox"></property>
+	</bean>
+	
+</beans>      
