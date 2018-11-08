@@ -17,6 +17,8 @@ public class MyAdvice implements InvocationHandler{
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		// TODO Auto-generated method stub
+		
+		// before advice : target 객체 전에 실행되는 before advice
 		System.out.println("-------------------");
 		// 범용성을 확보하기 위해서는 특정 자료형이 노출되면 안 된다. 
 		//((Hello)target).say(); 
@@ -25,6 +27,8 @@ public class MyAdvice implements InvocationHandler{
 		// Method method 안에 이미 어떤 객체인지 담겨 있음.
 		// 메소드를 호출하면서 파라미터로 args를 전달한다. 
 		Object result = method.invoke(target, args);
+		
+		// after advice : target 객체 전에 실행되는 after advice
 		System.out.println("-------------------");
 		return result;
 	}
