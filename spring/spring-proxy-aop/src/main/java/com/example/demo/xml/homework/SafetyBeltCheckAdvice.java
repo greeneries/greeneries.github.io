@@ -9,7 +9,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 @Component
-//@Aspect
 public class SafetyBeltCheckAdvice {
 
 	// 자동차에 start 메소드가 호출되면 
