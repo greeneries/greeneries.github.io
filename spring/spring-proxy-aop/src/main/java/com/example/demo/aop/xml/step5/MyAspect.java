@@ -53,7 +53,7 @@ public class MyAspect {
 	}
 
 	@Before("beforePointcut()")
-	public void myBefore(JoinPoint jointPoint) throws Throwable {
+	public void myBefore(JoinPoint joinPoint) throws Throwable {
 		// TODO Auto-generated method stub
 		System.out.println("######### Before Advice ##########");
 	}

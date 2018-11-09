@@ -16,19 +16,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyAspect {
 
-	public Object aroundTest(ProceedingJoinPoint jointPoint) throws Throwable {
+	public Object aroundTest(ProceedingJoinPoint joinPoint) throws Throwable {
 		// TODO Auto-generated method stub
 		System.out.println("-------- Around Before Advice --------");
 		
 		// target메소드 파라미터 값이 args가 있다. 
-		Object[] args = jointPoint.getArgs();
+		Object[] args = joinPoint.getArgs();
 		if(args != null && args.length > 0) {
 			System.out.println("---------------------------------");
 			Arrays.asList(args).forEach(System.out::println);
 			System.out.println("---------------------------------");
 		}
 		
-		Object ret = jointPoint.proceed(); // ret에는 add 결과 값이 5가 들어가 있다.
+		Object ret = joinPoint.proceed(); // ret에는 add 결과 값이 5가 들어가 있다.
 			
 		ret = (Double)ret + 100; // 결과 값을 가로채서 100을 더해서 돌려준다. 
 		
