@@ -68,7 +68,7 @@ public class MyAspect {
 		System.out.println("*********** myAfterThrowing ***********");
 	}
 	
-	@After("myafterPointcut()")
+	@After("execution(* add*(..)) || execution(* two*(..))")
 	public void myAfter() {
 		System.out.println("*********** myAfter ***********");
 	}
