@@ -2,7 +2,6 @@ package com.example.demo.homework;
 
 import java.util.Random;
 
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -21,13 +20,12 @@ public class SafetyBeltCheckAdvice {
 	@Around("bean(luxury*) && execution(* start(..)) ")
 	public Object myBefore(ProceedingJoinPoint joinPoint) throws Throwable {
 		
-		Object ret = "";
-		if(new SafetyBeltCheckSensor().check()) {
-			ret = joinPoint.proceed();
-		}else {
-
+		Object ret = null;
+		if(!SafetyBeltCheckSensor.check()) {
 			System.out.println("띵동! 안전벨트를 착용하세요.");
+			return ret;
 		}
+		ret = joinPoint.proceed();
 		return ret;
 	}
 	
@@ -37,9 +35,9 @@ public class SafetyBeltCheckAdvice {
 
 
 class SafetyBeltCheckSensor{
-	 Random rnd = new Random();
+	 static Random rnd = new Random();
 	
-	public  boolean check() {
+	public static boolean check() {
 	
 		if(rnd.nextInt(2) == 0) {
 			return true;

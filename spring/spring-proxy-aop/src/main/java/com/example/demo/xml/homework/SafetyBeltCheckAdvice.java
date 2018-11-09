@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
+
+
 @Component
 public class SafetyBeltCheckAdvice {
 
@@ -17,24 +19,21 @@ public class SafetyBeltCheckAdvice {
 	// 착용하지 않았으면 엔진을 경고음을 울려줍니다.
 	// 안전벨트를 착용했으면 engine is running 만약 안전벨트를 착용하지 않았으면 띵동 안전벨트를 착용하세요.
 	public Object myBefore(ProceedingJoinPoint joinPoint) throws Throwable {
-		
-		Object ret = "";
-		if(new SafetyBeltCheckSensor().check()) {
-			ret = joinPoint.proceed();
-		}else {
-
+		Object ret = null;
+		if(!SafetyBeltCheckSensor.check()) {
 			System.out.println("띵동! 안전벨트를 착용하세요.");
+			return ret;
 		}
-		return ret;
+		 return ret = joinPoint.proceed();
 	}
 }
 
 
 class SafetyBeltCheckSensor{
-	 Random rnd = new Random();
+	 static Random rnd = new Random();
 	
-	public  boolean check() {
-
+	public static boolean check() {
+	
 		if(rnd.nextInt(2) == 0) {
 			return true;
 		}
