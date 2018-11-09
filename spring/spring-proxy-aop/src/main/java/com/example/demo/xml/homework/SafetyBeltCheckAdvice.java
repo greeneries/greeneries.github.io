@@ -35,9 +35,8 @@ class SafetyBeltCheckSensor{
 	 Random rnd = new Random();
 	
 	public  boolean check() {
-	
-		int temp = rnd.nextInt(2);
-		if(temp == 0) {
+
+		if(rnd.nextInt(2) == 0) {
 			return true;
 		}
 		return false;
