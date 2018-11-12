@@ -3,6 +3,10 @@ package com.example.demo.xml.homework;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.example.demo.homework.Car;
+import com.example.demo.homework.LuxuryCar;
+
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -18,7 +22,7 @@ public class Test {
 
 		
 		// 안전벨트를 착용했으면 engine is running 만약 안전벨트를 착용하지 않았으면 띵동 안전벨트를 착용하세요.
-		Car luxuryCar = context.getBean("luxuryCar", Car.class);
+		Car luxuryCar = context.getBean("luxuryCar", LuxuryCar.class);
 
 		luxuryCar.start();
 		luxuryCar.stop();

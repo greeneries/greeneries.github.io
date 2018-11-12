@@ -9,7 +9,7 @@ public class Test {
 		// TODO Auto-generated method stub
 
 		// 일반 차는 안전벨트를 제공하지 않습니다. 
-		ApplicationContext context = new ClassPathXmlApplicationContext("car-advice.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("car-advice.xml");   
 	
 		Car car = context.getBean("car", Car.class);
 
@@ -18,7 +18,7 @@ public class Test {
 
 		
 		// 안전벨트를 착용했으면 engine is running 만약 안전벨트를 착용하지 않았으면 띵동 안전벨트를 착용하세요.
-		Car luxuryCar = context.getBean("luxuryCar", Car.class);
+		Car luxuryCar = context.getBean("luxuryCar", LuxuryCar.class);
 
 		luxuryCar.start();
 		luxuryCar.stop();
